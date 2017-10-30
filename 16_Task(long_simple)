@@ -1,0 +1,51 @@
+def long_simple():
+    print("Введите первое число:")
+    a = list(map(int, input()))
+    print("Введите второе число:")
+    b = list(map(int, input()))
+    print("Введите операцию:")
+    c = input()
+    if c == '+':
+        if len(a) >= len(b):
+            for i in range(len(b)):
+                if a[len(a)-1-i] + b[len(b)-1-i] >= 10:
+                    a[len(a)-1-i] += (b[len(b)-1-i] - 10)
+                    a[len(a)-2-i] += 1
+                else:
+                    a[len(a)-1-i] += b[len(b)-1-i]
+            for i in range(len(a)):
+                print(a[i], end='')
+        else:
+            for i in range(len(a)):
+                if b[len(b)-1-i] + a[len(a)-1-i] >= 10:
+                    b[len(b)-1-i] += (a[len(a)-1-i] - 10)
+                    b[len(b)-2-i] += 1
+                else:
+                    b[len(b)-1-i] += a[len(a)-1-i]
+            for i in range(len(b)):
+                print(b[i], end='')
+    elif c == '-':
+        if len(a) >= len(b):
+            for i in range(len(b)):
+                if a[len(a)-1-i] < b[len(b)-1-i]:
+                    a[len(a)-1-i] -= (b[len(b)-1-i] - 10)
+                    a[len(a)-2-i] -= 1
+                else:
+                    a[len(a)-1-i] -= b[len(b)-1-i]
+            for i in range(len(a)):
+                print(a[i], end='')
+        else:
+            print('-', end='')
+            for i in range(len(a)):
+                if b[len(b)-1-i] < a[len(a)-1-i]:
+                    b[len(b)-1-i] -= (a[len(a)-1-i] - 10)
+                    b[len(b)-2-i] -= 1
+                else:
+                    b[len(b)-1-i] -= a[len(a)-1-i]
+            for i in range(len(b)):
+                if i == 0 and b[i] == 0:
+                    i += 1
+                else:
+                    print(b[i], end='')
+
+
