@@ -1,30 +1,83 @@
 def long_simple():
-    print("Введите первое число:")
-    a = list(map(int, input()))
-    print("Введите второе число:")
-    b = list(map(int, input()))
-    print("Введите операцию:")
-    c = input()
+    tmp = 0
+    a = input("Введите первое число: ")
+    b = input("Введите второе число: ")
+    c = input("Введите операцию: ")
+    if a[0] == '-':
+        a = list(map(int, list(a[1:])))
+        for i in range(len(a)):
+            a[i] = -a[i]
+    else:
+        a = list(map(int, list(a)))
+    if b[0] == '-':
+        b = list(map(int, list(b[1:])))
+        for i in range(len(b)):
+            b[i] = -b[i]
+    else:
+        b = list(map(int, list(b)))
     if c == '+':
         if len(a) >= len(b):
             for i in range(len(b)):
                 if a[len(a)-1-i] + b[len(b)-1-i] >= 10:
                     a[len(a)-1-i] += (b[len(b)-1-i] - 10)
                     a[len(a)-2-i] += 1
+                    j = i
+                    while a[len(a)-j-2] >= 10:
+                        if len(a)-j-2 == 0:
+                            break
+                        else:
+                            a[len(a) - j - 2] -= 10
+                            a[len(a) - j - 3] += 1
+                            j += 1
+                if a[len(a)-1-i] + b[len(b)-1-i] < 0:
+                    a[len(a)-1-i] += (b[len(b)-1-i] + 10)
+                    a[len(a)-2-i] -= 1
+                    j = i
+                    while a[len(a)-j-2] < 0:
+                        if len(a) - j - 2 == 0:
+                            break
+                        else:
+                            a[len(a) - j - 2] += 10
+                            a[len(a) - j - 3] -= 1
+                            j += 1
                 else:
                     a[len(a)-1-i] += b[len(b)-1-i]
+            if tmp == 2:
+                a[0] = -a[0]
             for i in range(len(a)):
-                print(a[i], end='')
+                if not (a[i] == 0 and i == 0):
+                    print(a[i], end='')
         else:
             for i in range(len(a)):
                 if b[len(b)-1-i] + a[len(a)-1-i] >= 10:
                     b[len(b)-1-i] += (a[len(a)-1-i] - 10)
                     b[len(b)-2-i] += 1
+                    j = i
+                    while b[len(b) - j - 2] >= 10:
+                        if len(b) - j - 2 == 0:
+                            break
+                        else:
+                            b[len(b) - j - 2] -= 10
+                            b[len(b) - j - 3] += 1
+                            j += 1
+                if b[len(b)-1-i] + a[len(a)-1-i] < 0:
+                    b[len(b)-1-i] += (a[len(a)-1-i] + 10)
+                    b[len(b)-2-i] -= 1
+                    j = i
+                    while b[len(b)-j-2] < 0:
+                        if len(b) - j - 2 == 0:
+                            break
+                        else:
+                            b[len(b) - j - 2] += 10
+                            b[len(b) - j - 3] -= 1
+                            j += 1
                 else:
                     b[len(b)-1-i] += a[len(a)-1-i]
             for i in range(len(b)):
-                print(b[i], end='')
+                if not (b[i] == 0 and i == 0):
+                    print(b[i], end='')
     elif c == '-':
+        i = 0
         if len(a) >= len(b):
             for i in range(len(b)):
                 if a[len(a)-1-i] < b[len(b)-1-i]:
@@ -32,20 +85,21 @@ def long_simple():
                     a[len(a)-2-i] -= 1
                 else:
                     a[len(a)-1-i] -= b[len(b)-1-i]
-            for i in range(len(a)):
-                print(a[i], end='')
+            while a[i] == 0:
+                i += 1
+            for j in range(i, len(a)):
+                print(a[j], end='')
         else:
-            print('-', end='')
             for i in range(len(a)):
                 if b[len(b)-1-i] < a[len(a)-1-i]:
                     b[len(b)-1-i] -= (a[len(a)-1-i] - 10)
                     b[len(b)-2-i] -= 1
                 else:
                     b[len(b)-1-i] -= a[len(a)-1-i]
-            for i in range(len(b)):
-                if i == 0 and b[i] == 0:
-                    i += 1
-                else:
-                    print(b[i], end='')
+            while b[i] == 0:
+                i += 1
+            for j in range(i, len(b)):
+                print(b[j], end='')
 
 
+long_simple()
