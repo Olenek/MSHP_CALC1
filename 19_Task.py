@@ -12,7 +12,7 @@ def print_num_menu(num):
         print(long_ops)
 def menu():
     help()
-    input('Приветствую вас, Хозяин.\nДля перехода в калькулятор нажмите на любую клавишу...\n')
+    input('Приветствую вас, Хозяин.\nДля перехода в калькулятор нажмите на Enter...\n')
     num = get_action()
     while num != 0:
         print_num_menu(num)
