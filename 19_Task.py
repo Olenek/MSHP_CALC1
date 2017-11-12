@@ -1,4 +1,4 @@
-    def get_action():
+def get_action():
     t = int(input('Введите номер действия: '))
     while t not in [0, 1, 2, 3]:
         t = int(input('Некорректно, введите ещё раз: '))
