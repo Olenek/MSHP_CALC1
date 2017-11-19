@@ -1,3 +1,5 @@
+import 11_Task(menu_numbers)_WIP as menu_num
+import 15_Task(menu_settings) as str_ops
 def get_action():
     t = int(input('Введите номер действия: '))
     while t not in [0, 1, 2, 3]:
@@ -5,11 +7,11 @@ def get_action():
     return t
 def print_num_menu(num):
     if num == 1:
-        print(number_ops)
+        menu_num.menu_numbers()
     elif num == 2:
-        print(string_ops)
+        str_ops.string_ops()
     elif num == 3:
-        print(long_ops)
+        print("Sorry(\n")
 def menu():
     help()
     input('Приветствую вас, Хозяин.\nДля перехода в калькулятор нажмите на Enter...\n')
