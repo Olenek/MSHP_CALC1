@@ -42,4 +42,4 @@ def menu_settings():
         str_words()
     else: print('Ошибка: неверное действие. Попробуйте снова...') & menu_settings()
 
-menu_settings()
+#menu_settings()
